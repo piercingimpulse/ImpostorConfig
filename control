@@ -1,6 +1,6 @@
 Package: com.pixelomer.impostorconfig
 Name: ImpostorConfig
-Version: 0.0.1
+Version: 1.0
 Architecture: iphoneos-arm
 Description: Among Us Configurator
   Makes it easy to set a custom Among Us server. This custom server will only be used when jailbroken.
