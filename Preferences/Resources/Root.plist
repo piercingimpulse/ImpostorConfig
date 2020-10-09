@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Custom Server</string>
+			<key>footerText</key>
+			<string>Specify a custom server IP and port to use. When the tweak is enabled, the server selection in Among Us will be ignored and this custom server will be used instead.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.pixelomer.impostorconfig</string>
+			<key>key</key>
+			<string>CustomServerEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>IP Address or Domain</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.pixelomer.impostorconfig</string>
+			<key>default</key>
+			<string>172.105.251.170</string>
+			<key>key</key>
+			<string>IPAddress</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Port</string>
+			<key>isNumeric</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.pixelomer.impostorconfig</string>
+			<key>default</key>
+			<string>22023</string>
+			<key>key</key>
+			<string>Port</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>ImpostorConfig</string>
+</dict>
+</plist>
