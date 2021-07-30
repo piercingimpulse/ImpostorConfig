@@ -12,6 +12,6 @@
  Launch Among Us, go to Local and click on "Create Game" and it will connect to the host.
  
  ## TO DO
- [] Create broadcast message and option (eg: broadcast timer);
- [] More option for Host (ex: custom port forward);
- [x] Ensure client can be host with tweak.
+- [x] Ensure client can be host with tweak.
+- [ ] Create broadcast message and option (eg: broadcast timer);
+- [ ] More option for Host (ex: custom port);
