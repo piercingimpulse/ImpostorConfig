@@ -1,10 +1,11 @@
 Package: com.pixelomer.impostorconfig
-Name: ImpostorConfig
-Version: 1.0.1
+Name: ImpostorConfig (LAN)
+Version: 1.0.1a
 Architecture: iphoneos-arm
 Description: Among Us Configurator
-  Makes it easy to set a custom Among Us server. This custom server will only be used when jailbroken.
-Maintainer: pixelomer
+  Forked version of ImpostorConfig by pixelomer, used on iOS 8.x to play LAN over internet. If your hosting you don't need this app, but only to forward UDP/TCP port 22023.
+  To connect, go into Setting, activate the tweak, open Among Us and click on LAN and then Create Host. It can be unstable at time.
+Maintainer: piercingimpulse
 Author: pixelomer
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), ws.hbang.common (>= 1.2)
