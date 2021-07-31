@@ -11,7 +11,18 @@
  Just activate the tweak from the Setting and input the public IP of the Host.
  Launch Among Us, go to Local and click on "Create Game" and it will connect to the host.
  
- ## TO DO
-- [x] Ensure client can be host with tweak.
-- [ ] Create broadcast message and option (eg: broadcast timer);
-- [ ] More option for Host (ex: custom port);
+## TO DO
+#### Broadcast option:
+- [x] Create broadcast message
+- [ ] Personalised broadcast message
+- [ ] VPN option (set IP from Settings)
+### Client
+- [x] Ensure client can host a game as well
+- [ ] Stop broadcast message if client start hosting
+- [ ] Option to change port for broadcast listening (binding/recvfrom)
+- [ ] Option to change port packets receiving (binding/recvfrom)
+- [x] Option to change port packets sending (sendto)
+### Host
+- [ ] Option to change port for broadcast (sendto)
+- [ ] Option to change port packets receiving (binding/recvfrom/sendto)
+- [x] Option to change port packets sending (sendto)
