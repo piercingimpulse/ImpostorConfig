@@ -8,9 +8,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Custom Server</string>
+			<string>Enable sus LAN</string>
 			<key>footerText</key>
-			<string>Specify a custom server IP and port to use. When the tweak is enabled, the server selection in Among Us will be ignored and this custom server will be used instead.</string>
+			<string>Please remember to restart Among Us when enable/disable the tweak.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -18,9 +18,9 @@
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
-			<string>com.pixelomer.impostorconfig</string>
+			<string>com.piercingimpulse.suslan</string>
 			<key>key</key>
-			<string>CustomServerEnabled</string>
+			<string>TweakLANEnabled</string>
 			<key>label</key>
 			<string>Enabled</string>
 		</dict>
@@ -32,28 +32,128 @@
 			<key>isIP</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.pixelomer.impostorconfig</string>
+			<string>com.piercingimpulse.suslan</string>
 			<key>default</key>
-			<string>172.105.251.170</string>
+			<string>127.0.0.1</string>
 			<key>key</key>
-			<string>IPAddress</string>
+			<string>HostIPAddress</string>
+			<key>label</key>
+			<string>Host IP/Domain</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
-			<string>Port</string>
+			<string>Custom broadcast message</string>
+			<key>isText</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>(Proxy)</string>
+			<key>key</key>
+			<string>CustomBroadcastMessage</string>
+			<key>label</key>
+			<string>Custom proxy name</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>EXPERIMENTAL FEATURES</string>
+			<key>footerText</key>
+			<string>Still working on on this features.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakVPNEnabled</string>
+			<key>label</key>
+			<string>ZeroTier Broadcast</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakPortEnabled</string>
+			<key>label</key>
+			<string>Custom Port</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Broadcast Port</string>
 			<key>isNumeric</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.pixelomer.impostorconfig</string>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>47777</string>
+			<key>key</key>
+			<string>BroadcastPort</string>
+			<key>label</key>
+			<string>Broadcast Port</string>
+		</dict>
+		<dict>
+		<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Host Port</string>
+			<key>isNumeric</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
 			<key>default</key>
 			<string>22023</string>
 			<key>key</key>
-			<string>Port</string>
+			<string>HostPort</string>
+			<key>label</key>
+			<string>Host Port</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Listening Port</string>
+			<key>isNumeric</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>47777</string>
+			<key>key</key>
+			<string>ListeningPort</string>
+			<key>label</key>
+			<string>Listening Port</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Receive Port</string>
+			<key>isNumeric</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>22023</string>
+			<key>key</key>
+			<string>ReceivePort</string>
+			<key>label</key>
+			<string>Receiving Port</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>ImpostorConfig</string>
+	<string>sus LAN Config</string>
 </dict>
 </plist>
