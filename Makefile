@@ -4,11 +4,11 @@ export TARGET ARCHS
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = ImpostorConfig
+TWEAK_NAME = susLAN
 
-ImpostorConfig_FILES = Tweak.x
-ImpostorConfig_CFLAGS = -fobjc-arc
-ImpostorConfig_EXTRA_FRAMEWORKS += Cephei
+susLAN_FILES = Tweak.x
+susLAN_CFLAGS = -fobjc-arc
+susLAN_EXTRA_FRAMEWORKS += Cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += Preferences
