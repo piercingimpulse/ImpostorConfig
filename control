@@ -1,6 +1,6 @@
 Package: com.piercingimpulse.suslan
 Name: sus LAN (iOS 8.X)
-Version: 1.0.1a
+Version: 1.1.1a
 Architecture: iphoneos-arm
 Description: Among Us Configurator
   Forked version of ImpostorConfig by pixelomer, used on iOS 8.x to play LAN over internet.
