@@ -1,11 +1,11 @@
-Package: com.pixelomer.impostorconfig
-Name: ImpostorConfig (LAN)
+Package: com.piercingimpulse.suslan
+Name: sus LAN (iOS 8.X)
 Version: 1.0.1a
 Architecture: iphoneos-arm
 Description: Among Us Configurator
-  Forked version of ImpostorConfig by pixelomer, used on iOS 8.x to play LAN over internet. If your hosting you don't need this app, but only to forward UDP/TCP port 22023.
-  To connect, go into Setting, activate the tweak, open Among Us and click on LAN and then Create Host. It can be unstable at time.
+  Forked version of ImpostorConfig by pixelomer, used on iOS 8.x to play LAN over internet.
+  Uses codes also from Proxom.
 Maintainer: piercingimpulse
-Author: pixelomer
+Author: piercingimpulse
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), ws.hbang.common (>= 1.2)
