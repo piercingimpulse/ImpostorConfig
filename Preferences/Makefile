@@ -1,11 +1,11 @@
 include $(THEOS)/makefiles/common.mk
 
-BUNDLE_NAME = ImpostorConfigPrefs
+BUNDLE_NAME = susLANPrefs
 
-ImpostorConfigPrefs_FILES = PXICPRootListController.m
-ImpostorConfigPrefs_FRAMEWORKS = UIKit
-ImpostorConfigPrefs_PRIVATE_FRAMEWORKS = Preferences
-ImpostorConfigPrefs_INSTALL_PATH = /Library/PreferenceBundles
-ImpostorConfigPrefs_CFLAGS = -fobjc-arc
+susLANPrefs_FILES = PRIMPRootListController.m
+susLANPrefs_FRAMEWORKS = UIKit
+susLANPrefs_PRIVATE_FRAMEWORKS = Preferences
+susLANPrefs_INSTALL_PATH = /Library/PreferenceBundles
+susLANPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
