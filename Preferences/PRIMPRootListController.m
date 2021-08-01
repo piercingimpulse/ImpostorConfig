@@ -1,7 +1,7 @@
-#import "PXICPRootListController.h"
+#import "PRIMPRootListController.h"
 #import <Preferences/PSSpecifier.h>
 
-@implementation PXICPRootListController
+@implementation PRIMPRootListController
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
