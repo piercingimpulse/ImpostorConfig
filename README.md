@@ -40,7 +40,7 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 - Ability to broadcast fake message to join custom host
 - Personalised proxy message
 - New name and icon
-- Introduction of custom port and VPN broadcast (
+- Introduction of custom port and VPN broadcast
 
 #### 1.0.1a
 - Inital release: client can join custom host, but can't host.
