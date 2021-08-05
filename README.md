@@ -26,9 +26,9 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
  Use the Client proxy option and type the IP/Domain of the host. The tweak will then broadcast a (customisable) proxy message to the broadcast address 255.255.255.255 to allow you to join the host.
  
  ### Thanks
-[Randy-420](https://github.com/Randy-420/) ~ got me into development;
-[InvoxiPlayGames](https://github.com/InvoxiPlayGames/) ~ for inspiration;
-[Tudor3510](https://github.com/Tudor3510/) & [Luigi Auriemma](https://aluigi.altervista.org/mytoolz.htm) ~ for their projects "Proxom" and "sudppipe" that have largerly helped the devolping of sus LAN.
+* [Randy-420](https://github.com/Randy-420/) ~ got me into development;
+* [InvoxiPlayGames](https://github.com/InvoxiPlayGames/) ~ for inspiration;
+* [Tudor3510](https://github.com/Tudor3510/) & [Luigi Auriemma](https://aluigi.altervista.org/mytoolz.htm) ~ for their projects "Proxom" and "sudppipe" that have largerly helped the devolping of sus LAN.
 
 ## CHANGELOG
 #### 1.2.0
