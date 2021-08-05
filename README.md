@@ -31,18 +31,18 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 * [Tudor3510](https://github.com/Tudor3510/) & [Luigi Auriemma](https://aluigi.altervista.org/mytoolz.htm) ~ for their projects "Proxom" and "sudppipe" that have largerly helped the devolping of sus LAN.
 
 ## CHANGELOG
-#### 1.2.0
+#### 1.2.0a
 - VPN/Offline proxy server
 - Improved stability with multithread
 
-#### 1.0.1a
+#### 1.1.1a
 - Fixed bug of client unable to host
 - Ability to broadcast fake message to join custom host
 - Personalised proxy message
 - New name and icon
 - Introduction of custom port and VPN broadcast (
 
-#### 1.0.0a
+#### 1.0.1a
 - Inital release: client can join custom host, but can't host.
  
 ## TO DO
