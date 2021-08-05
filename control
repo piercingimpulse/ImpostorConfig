@@ -1,10 +1,11 @@
 Package: com.piercingimpulse.suslan
-Name: sus LAN (iOS 8.X)
-Version: 1.1.1a
+Name: sus LAN
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Among Us Configurator
-  Forked version of ImpostorConfig by pixelomer, used on iOS 8.x to play LAN over internet.
-  Uses codes also from Proxom.
+  From a forked version of ImpostorConfig by pixelomer and based on Proxom by Tudor3510, "sus LAN" aim to create a solution
+  to play Among Us using the Local server over the Internet. You can either proxy a fake message on your network to connect to an external host,
+  or create a proxy message to 10 different clients over Internet or VPN to play. Tested on iOS 8.x.x and 12.x, iPad and iPod. Works with most Among Us versions.
 Maintainer: piercingimpulse
 Author: piercingimpulse
 Section: Tweaks

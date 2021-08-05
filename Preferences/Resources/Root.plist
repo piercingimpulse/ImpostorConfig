@@ -5,12 +5,36 @@
 	<key>items</key>
 	<array>
 		<dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Custom Broadcast Message</string>
+			<key>footerText</key>
+			<string>Change the name of the broadcast proxy server.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>Message</string>
+			<key>isText</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>(Proxy)</string>
+			<key>key</key>
+			<string>CustomBroadcastMessage</string>
+			<key>label</key>
+			<string>Message</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Enable sus LAN</string>
+			<string>Proxy Client</string>
 			<key>footerText</key>
-			<string>Please remember to restart Among Us when enable/disable the tweak.</string>
+			<string>Will broadcast a proxy server on your network, but only this device can connect to the host.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -40,29 +64,14 @@
 			<key>label</key>
 			<string>Host IP/Domain</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>placeholder</key>
-			<string>Custom broadcast message</string>
-			<key>isText</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.piercingimpulse.suslan</string>
-			<key>default</key>
-			<string>(Proxy)</string>
-			<key>key</key>
-			<string>CustomBroadcastMessage</string>
-			<key>label</key>
-			<string>Custom proxy name</string>
-		</dict>
+
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>EXPERIMENTAL FEATURES</string>
+			<string>Proxy Server</string>
 			<key>footerText</key>
-			<string>Still working on on this features.</string>
+			<string>It can broadcast your game over 10 different clients. Use on VPN such as ZeroTier. Must set a timer of max 25 seconds over VPN at the moment.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -74,7 +83,219 @@
 			<key>key</key>
 			<string>TweakVPNEnabled</string>
 			<key>label</key>
-			<string>ZeroTier Broadcast</string>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakVPNInfiniteLoop</string>
+			<key>label</key>
+			<string>Infinite Loop</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>25</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>25</string>
+			<key>key</key>
+			<string>TweakVPNTimer</string>
+			<key>label</key>
+			<string>Broadcast proxy timer (sec)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>255.255.255.255</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>255.255.255.255</string>
+			<key>key</key>
+			<string>TweakVPNIP0</string>
+			<key>label</key>
+			<string>Global Broadcast</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.1</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP1</string>
+			<key>label</key>
+			<string>Client 1</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.2</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP2</string>
+			<key>label</key>
+			<string>Client 2</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.3</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP3</string>
+			<key>label</key>
+			<string>Client 3</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.4</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP4</string>
+			<key>label</key>
+			<string>Client 4</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.5</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP5</string>
+			<key>label</key>
+			<string>Client 5</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.6</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP6</string>
+			<key>label</key>
+			<string>Client 6</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.7</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP7</string>
+			<key>label</key>
+			<string>Client 7</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.8</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP8</string>
+			<key>label</key>
+			<string>Client 8</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.9</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP8</string>
+			<key>label</key>
+			<string>Client 9</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.10</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP10</string>
+			<key>label</key>
+			<string>Client 10</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>EXPERIMENTAL FEATURES</string>
+			<key>footerText</key>
+			<string>Still working on on this features.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -155,5 +376,7 @@
 	</array>
 	<key>title</key>
 	<string>sus LAN Config</string>
+	<key>footerText</key>
+	<string>piercingimpulse</string>
 </dict>
 </plist>

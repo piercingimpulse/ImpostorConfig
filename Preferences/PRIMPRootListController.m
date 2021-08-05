@@ -12,7 +12,7 @@
 
 - (void)setPreferenceValue:(id)_value specifier:(PSSpecifier *)specifier {
 	id value = _value;
-	if ([(NSString *)[specifier propertyForKey:@"placeholder"] isEqualToString:@"Port"]) {
+	if ([(NSString *)[specifier propertyForKey:@"placeholder"] isEqualToString:@"BroadcastPort"]) {
 		// Refuse to update the port if it's not a valid port
 		NSInteger integerValue = [(NSString *)value integerValue];
 		if ((integerValue < 0x0000) || (integerValue > 0xFFFF)) {
