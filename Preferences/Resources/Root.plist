@@ -8,11 +8,29 @@
 		<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Custom Broadcast Message</string>
-			<key>footerText</key>
-			<string>Change the name of the broadcast proxy server.</string>
+			<string>Enable sus LAN</string>
 		</dict>
 		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweaksusEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Broadcast options</string>
+			<key>footerText</key>
+			<string>You can configure your proxy message here. The Broadcast IP normally is 255.255.255.255, but if you are using VPN or cellular data, it may be different. In doubt, just leave it blank. If using a VPN, you can change with the subnet mask IP like xxx.xxx.xxx.255</string>
+			</dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -26,15 +44,32 @@
 			<key>key</key>
 			<string>CustomBroadcastMessage</string>
 			<key>label</key>
-			<string>Message</string>
+			<string>Proyx name</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>IP Address</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>127.0.0.1</string>
+			<key>key</key>
+			<string>GlobalBroadcast</string>
+			<key>label</key>
+			<string>Global Broadcast IP</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Proxy Client</string>
+			<string>Proxy Client Tunnel</string>
 			<key>footerText</key>
-			<string>Will broadcast a proxy server on your network, but only this device can connect to the host.</string>
+			<string>Once enabled, will show a proxy message across your network to help you connecting to the host IP specified.
+* NOTE * at the moment does not work over cellular data. If using a VPN, you must set your real local static IP in Client IP (you can check your static IP from the Settings → Wifi and click on the "i" button. Normally looks like 192.168.xxx.xxx)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -64,6 +99,22 @@
 			<key>label</key>
 			<string>Host IP/Domain</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>IP Address or Domain</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>127.0.0.1</string>
+			<key>key</key>
+			<string>ClientIPAddress</string>
+			<key>label</key>
+			<string>Client IP</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>
@@ -71,7 +122,8 @@
 			<key>label</key>
 			<string>Proxy Server</string>
 			<key>footerText</key>
-			<string>It can broadcast your game over 10 different clients. Use on VPN such as ZeroTier. Must set a timer of max 25 seconds over VPN at the moment.</string>
+			<string>Perfect solution for hosting a game over VPN such as ZeroTier. You can choose how many clients broadcast your proxy server.
+You need to know the IP address of the clients.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -102,7 +154,7 @@
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
 			<string>25</string>
-			<key>isIP</key>
+			<key>isNumeric</key>
 			<true/>
 			<key>defaults</key>
 			<string>com.piercingimpulse.suslan</string>
@@ -111,23 +163,23 @@
 			<key>key</key>
 			<string>TweakVPNTimer</string>
 			<key>label</key>
-			<string>Broadcast proxy timer (sec)</string>
+			<string>Timer broadcast</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
-			<string>255.255.255.255</string>
-			<key>isIP</key>
+			<string>15</string>
+			<key>isNumeric</key>
 			<true/>
 			<key>defaults</key>
 			<string>com.piercingimpulse.suslan</string>
 			<key>default</key>
-			<string>255.255.255.255</string>
+			<string>25</string>
 			<key>key</key>
-			<string>TweakVPNIP0</string>
+			<string>TweakVPNClientNumber</string>
 			<key>label</key>
-			<string>Global Broadcast</string>
+			<string>Client number</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -145,7 +197,7 @@
 			<key>label</key>
 			<string>Client 1</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -161,7 +213,7 @@
 			<key>label</key>
 			<string>Client 2</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -177,7 +229,7 @@
 			<key>label</key>
 			<string>Client 3</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -193,7 +245,7 @@
 			<key>label</key>
 			<string>Client 4</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -209,7 +261,7 @@
 			<key>label</key>
 			<string>Client 5</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -225,7 +277,7 @@
 			<key>label</key>
 			<string>Client 6</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -241,7 +293,7 @@
 			<key>label</key>
 			<string>Client 7</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -257,7 +309,7 @@
 			<key>label</key>
 			<string>Client 8</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -273,7 +325,7 @@
 			<key>label</key>
 			<string>Client 9</string>
 		</dict>
-				<dict>
+			<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -288,6 +340,86 @@
 			<string>TweakVPNIP10</string>
 			<key>label</key>
 			<string>Client 10</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.11</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP11</string>
+			<key>label</key>
+			<string>Client 11</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.12</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP12</string>
+			<key>label</key>
+			<string>Client 12</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.13</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP13</string>
+			<key>label</key>
+			<string>Client 13</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.14</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP14</string>
+			<key>label</key>
+			<string>Client 14</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>192.168.8.15</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>TweakVPNIP15</string>
+			<key>label</key>
+			<string>Client 15</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -353,7 +485,7 @@
 			<key>default</key>
 			<string>47777</string>
 			<key>key</key>
-			<string>ListeningPort</string>
+			<string>ListenPort</string>
 			<key>label</key>
 			<string>Listening Port</string>
 		</dict>

@@ -1,6 +1,6 @@
 Package: com.piercingimpulse.suslan
 Name: sus LAN
-Version: 1.2.0
+Version: 1.2.1a
 Architecture: iphoneos-arm
 Description: Among Us Configurator
   From a forked version of ImpostorConfig by pixelomer and based on Proxom by Tudor3510, "sus LAN" aim to create a solution
