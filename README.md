@@ -1,5 +1,6 @@
 # sus LAN
 Tired of waiting in a lobby with stranger? Your device is too old to play online? Want to feel the power of be your own mobile game server? Then sus LAN is the answer for you!
+**NOTE:** This tweak will work best with a VPN such as ZeroTier, but can be used with your network once the ports 22023 and 47777 (UDP/TCP) are open and linked to the device using the tweak. Can't be used for now only with cellular data or hotspot provided by cellular data.
 
 ## Compatibility
 Tested on:
@@ -45,17 +46,23 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 #### 1.0.1a
 - Inital release: client can join custom host, but can't host.
  
-## TO DO
+## TO DO & KNOWN ISSUES
 #### Broadcast option:
 - [x] Create broadcast message
 - [x] Personalised broadcast message
+- [ ] Copy name from binary host file (advanced)
 #### Client
 - [x] Ensure client can host a game as well
-- [ ] Stop fake broadcast message if client choose to host a game
+- [x] Workaround for VPN (using client IP in prefs)
+- [ ] Ensure tunnel works on cellular data
+- [ ] Stop fake broadcast message if client choose to host a game (optional)
 #### Host
 - [x] Send fake broadcast message via VPN
-- [ ] Replace loop/timer with hearthbeat messages (host)
-#### General
-- [ ] Improve setting menu with error messages
+- [x] Replace loop/timer with hearthbeat message
+- [ ] 
+#### Preferences Panel
+- [x] Insert all option (also experimental one)
+- [ ] Generate errors
 - [ ] Translate settings to different languages
 - [ ] Create a cuter icon
+- [ ] Ping test (optional)
