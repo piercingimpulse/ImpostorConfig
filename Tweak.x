@@ -18,19 +18,21 @@
 // Main preference costants
 static NSString *const ksusLANPreferenceDomain = @"com.piercingimpulse.suslan";
 static NSString *const ksusLANTweakEnabled = @"TweaksusEnabled";
+
+// Broadcast preference constants
+static NSString *const ksusLANTweakBroadcastEnabled = @"TweakBroadcastEnabled";
+static NSString *const ksusLANCustomBroadcastMessage = @"CustomBroadcastMessage";
+static NSString *const ksusLANTGlobalBroadcast = @"GlobalBroadcast";
+static NSString *const ksusLANTweakVPNInfiniteLoop = @"TweakVPNInfiniteLoop";
+static NSString *const ksusLANTweakVPNTimer = @"TweakVPNTimer";
+
+// LAN preference constants
 static NSString *const ksusLANTweakLANEnabled = @"TweakLANEnabled";
 static NSString *const ksusLANCustomServerIP = @"HostIPAddress";
 static NSString *const ksusLANCustomClientIP = @"ClientIPAddress";
 
-
-// Broadcast preference constants
-static NSString *const ksusLANCustomBroadcastMessage = @"CustomBroadcastMessage";
-static NSString *const ksusLANTGlobalBroadcast = @"GlobalBroadcast";
-
 // Host preference costants
 static NSString *const ksusLANTweakVPNEnabled = @"TweakVPNEnabled";
-static NSString *const ksusLANTweakVPNInfiniteLoop = @"TweakVPNInfiniteLoop";
-static NSString *const ksusLANTweakVPNTimer = @"TweakVPNTimer";
 static NSString *const ksusLANTweakVPNClientNumber = @"TweakVPNClientNumber";
 static NSString *const ksusLANTweakVPNIP1 = @"TweakVPNIP1";
 static NSString *const ksusLANTweakVPNIP2 = @"TweakVPNIP2";
@@ -73,11 +75,11 @@ const char BROADCAST_PROXY[] = "Proxy";
 const char BROADCAST_PROXY_FINAL[] = "~Open~1~";
 static int startBroadcast = 0;
 static int timerBroadcast = 20;
-
-//VPN Variable test
 static BOOL TweakVPNInfiniteLoop = NO;
 static uint16_t TweakVPNTimer = 0;
 static int TweakVPNClientNumber = 0;
+
+//VPN Variable test
 static const char *VPNIP1 = 0;
 static const char *VPNIP2 = 0;
 static const char *VPNIP3 = 0;
@@ -157,15 +159,17 @@ void* threadFuncBroadcast(void* arg) {
 	
 	FakeBroadcastMsg();
 
-	while(startBroadcast <= timerBroadcast){
+	while (startBroadcast <= TweakVPNTimer) {
 	if(sendto(udp_broadcast, finalBroadcastMessage, strlen(finalBroadcastMessage), 0, (struct sockaddr*)&udpbroadcast, sizeof udpbroadcast) == -1) {
 		die("sendto()");
 	}
-	++startBroadcast;
-		if (startBroadcast == timerBroadcast) {
-			startBroadcast = 1;
-			sleep(1);
-		}
+		if (TweakVPNInfiniteLoop == NO) {
+			++startBroadcast;
+			if (timerBroadcast <= TweakVPNTimer && startBroadcast == timerBroadcast) {
+				sleep(1);
+			}
+					if (startBroadcast == TweakVPNTimer) break;
+				}
 	}
 	close(udp_broadcast);
 	return 0;
@@ -550,14 +554,15 @@ void BroadcastVPN() {
 	preferences = [[HBPreferences alloc] initWithIdentifier:ksusLANPreferenceDomain];
 	[preferences registerDefaults:@{
 		ksusLANTweakEnabled : @(NO),
+		ksusLANTweakBroadcastEnabled : @(NO),
+		ksusLANCustomBroadcastMessage : @"Proxy",
+		ksusLANTGlobalBroadcast : @"255.255.255.255",
+		ksusLANTweakVPNTimer : @"15",
+		ksusLANTweakVPNInfiniteLoop : @(NO),
 		ksusLANTweakLANEnabled : @(NO),
 		ksusLANCustomServerIP : @"127.0.0.1",
 		ksusLANCustomClientIP : @"127.0.0.1",
-		ksusLANCustomBroadcastMessage : @"Proxy",
-		ksusLANTGlobalBroadcast : @"255.255.255.255",
 		ksusLANTweakVPNEnabled : @(NO),
-		ksusLANTweakVPNTimer : @"15",
-		ksusLANTweakVPNInfiniteLoop : @(NO),
 		ksusLANTweakVPNClientNumber : @"15",
 		ksusLANTweakVPNIP1 : @"",
 		ksusLANTweakVPNIP2 : @"",
@@ -584,6 +589,8 @@ void BroadcastVPN() {
 	// Initialize the custom server hooks if the user enabled the tweak
 	NSNumber *ServerEnabled = [preferences objectForKey:ksusLANTweakEnabled];
 		if ([ServerEnabled boolValue]) {
+			NSNumber *BrodacastEnabled = [preferences objectForKey:ksusLANTweakBroadcastEnabled];
+			if ([BrodacastEnabled boolValue]) {
 			// Get the custom broadcast message
 			NSString *broadcastmessage = [preferences objectForKey:ksusLANCustomBroadcastMessage];
 			const char *Broadcastmsg = [broadcastmessage UTF8String];
@@ -591,6 +598,12 @@ void BroadcastVPN() {
 			NSString *globalbroadcast = [preferences objectForKey:ksusLANTGlobalBroadcast];
 			const char *globalbroadcastmsg = [globalbroadcast UTF8String];
 			GlobalBroadcast = globalbroadcastmsg;
+			NSNumber *VPNTimerNoLoop = [preferences objectForKey:ksusLANTweakVPNInfiniteLoop];
+			TweakVPNInfiniteLoop = [VPNTimerNoLoop boolValue];
+			NSString *VPNTimer = [preferences objectForKey:ksusLANTweakVPNTimer];
+			int VPNTimermsg = [VPNTimer intValue];
+			TweakVPNTimer = (uint16_t)VPNTimermsg;
+			}
 
 			// Custom broadcast
 			NSNumber *LANServerEnabled = [preferences objectForKey:ksusLANTweakLANEnabled];
@@ -602,17 +615,14 @@ void BroadcastVPN() {
 
 				// Initialize the hooks for client proxy
 				%init(CustomLANServer);
+			if ([BrodacastEnabled boolValue]) {
 				Broadcast();
 				}
+			}
 
 			// Custom Client Proxy hooks
 			NSNumber *VPNBroadcast = [preferences objectForKey:ksusLANTweakVPNEnabled];
 				if ([VPNBroadcast boolValue]) {
-					NSNumber *VPNTimerNoLoop = [preferences objectForKey:ksusLANTweakVPNInfiniteLoop];
-					TweakVPNInfiniteLoop = [VPNTimerNoLoop boolValue];
-					NSString *VPNTimer = [preferences objectForKey:ksusLANTweakVPNTimer];
-					int VPNTimermsg = [VPNTimer intValue];
-					TweakVPNTimer = (uint16_t)VPNTimermsg;
 					NSString *numberclient = [preferences objectForKey:ksusLANTweakVPNClientNumber];
 					int clientnumber = [numberclient intValue];
 					TweakVPNClientNumber = clientnumber;
@@ -662,43 +672,45 @@ void BroadcastVPN() {
 					const char *vpnipmsg15 = [vpnip15 UTF8String];
 					VPNIP15 = vpnipmsg15;
 					%init(CustomVPNBroadcast);
-					BroadcastVPN();
+					if ([BrodacastEnabled boolValue]) {
+						BroadcastVPN();
+					}
 				}
-		// EXPERIMENTAL PORT HOOKS
-		NSNumber *ExpServerEnabled = [preferences objectForKey:ksusLANTweakPortEnabled];
-			if ([ExpServerEnabled boolValue]) {
-				NSString *broadcastport = [preferences objectForKey:ksusLANCustomBroadcastPort];
-				NSString *serverport = [preferences objectForKey:ksusLANCustomServerPort];
-				NSString *listenport = [preferences objectForKey:ksusLANCustomListenPort];
-				NSString *receiveport = [preferences objectForKey:ksusLANCustomReceivePort];
-				int rawPort1 = [broadcastport intValue];
-				if ((rawPort1 < 0x0000) || (rawPort1 > 0xFFFF)) {
-					// The port must be an unsigned 16-bit value!
-					[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", broadcastport];
-		 		}
-					int rawPort2 = [serverport intValue];
-					if ((rawPort2 < 0x0000) || (rawPort2 > 0xFFFF)) {
-					// The port must be an unsigned 16-bit value!
-					[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", serverport];
-		 		}
-					int rawPort3 = [listenport intValue];
-					if ((rawPort3 < 0x0000) || (rawPort3 > 0xFFFF)) {
-					// The port must be an unsigned 16-bit value!
-					[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", listenport];
-		 		}
-					int rawPort4 = [receiveport intValue];
-					if ((rawPort4 < 0x0000) || (rawPort4 > 0xFFFF)) {
-					// The port must be an unsigned 16-bit value!
-					[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", receiveport];
-				}
-				// Convert the specified port to the network byte order
-				broadcastPort = htons((uint16_t)rawPort1);
-				customPort = htons((uint16_t)rawPort2);
-				clientListenPort = htons((uint16_t)rawPort3);
-				clientReceivePort = htons((uint16_t)rawPort4);
+				// EXPERIMENTAL PORT HOOKS
+				NSNumber *ExpServerEnabled = [preferences objectForKey:ksusLANTweakPortEnabled];
+				if ([ExpServerEnabled boolValue]) {
+					NSString *broadcastport = [preferences objectForKey:ksusLANCustomBroadcastPort];
+					NSString *serverport = [preferences objectForKey:ksusLANCustomServerPort];
+					NSString *listenport = [preferences objectForKey:ksusLANCustomListenPort];
+					NSString *receiveport = [preferences objectForKey:ksusLANCustomReceivePort];
+					int rawPort1 = [broadcastport intValue];
+						if ((rawPort1 < 0x0000) || (rawPort1 > 0xFFFF)) {
+						// The port must be an unsigned 16-bit value!
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", broadcastport];
+		 			}
+						int rawPort2 = [serverport intValue];
+						if ((rawPort2 < 0x0000) || (rawPort2 > 0xFFFF)) {
+						// The port must be an unsigned 16-bit value!
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", serverport];
+		 			}
+						int rawPort3 = [listenport intValue];
+						if ((rawPort3 < 0x0000) || (rawPort3 > 0xFFFF)) {
+						// The port must be an unsigned 16-bit value!
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", listenport];
+		 			}
+						int rawPort4 = [receiveport intValue];
+						if ((rawPort4 < 0x0000) || (rawPort4 > 0xFFFF)) {
+						// The port must be an unsigned 16-bit value!
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", receiveport];
+					}
+					// Convert the specified port to the network byte order
+					broadcastPort = htons((uint16_t)rawPort1);
+					customPort = htons((uint16_t)rawPort2);
+					clientListenPort = htons((uint16_t)rawPort3);
+					clientReceivePort = htons((uint16_t)rawPort4);
 
-				// Initialize the hooks
-				%init(ExpPort);
-			}
+					// Initialize the hooks
+					%init(ExpPort);
+				}
 		}
 }

@@ -5,7 +5,7 @@
 	<key>items</key>
 	<array>
 		<dict>
-		<key>cell</key>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Enable sus LAN</string>
@@ -21,16 +21,34 @@
 			<string>TweaksusEnabled</string>
 			<key>label</key>
 			<string>Enabled</string>
+			<key>id</key>
+			<string>GLOBAL_SWITCH</string>
 		</dict>
 		<dict>
-		<key>cell</key>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Broadcast options</string>
 			<key>footerText</key>
 			<string>You can configure your proxy message here. The Broadcast IP normally is 255.255.255.255, but if you are using VPN or cellular data, it may be different. In doubt, just leave it blank. If using a VPN, you can change with the subnet mask IP like xxx.xxx.xxx.255</string>
-			</dict>
-			<dict>
+			<key>id</key>
+			<string>BROADCAST_GLOBAL</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakBroadcastEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+			<key>id</key>
+			<string>BROADCAST_SWITCH</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -44,7 +62,9 @@
 			<key>key</key>
 			<string>CustomBroadcastMessage</string>
 			<key>label</key>
-			<string>Proyx name</string>
+			<string>Proxy name</string>
+			<key>id</key>
+			<string>BROADCAST_MESSAGE</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -61,81 +81,8 @@
 			<string>GlobalBroadcast</string>
 			<key>label</key>
 			<string>Global Broadcast IP</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Proxy Client Tunnel</string>
-			<key>footerText</key>
-			<string>Once enabled, will show a proxy message across your network to help you connecting to the host IP specified.
-* NOTE * at the moment does not work over cellular data. If using a VPN, you must set your real local static IP in Client IP (you can check your static IP from the Settings → Wifi and click on the "i" button. Normally looks like 192.168.xxx.xxx)</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.piercingimpulse.suslan</string>
-			<key>key</key>
-			<string>TweakLANEnabled</string>
-			<key>label</key>
-			<string>Enabled</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>placeholder</key>
-			<string>IP Address or Domain</string>
-			<key>isIP</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.piercingimpulse.suslan</string>
-			<key>default</key>
-			<string>127.0.0.1</string>
-			<key>key</key>
-			<string>HostIPAddress</string>
-			<key>label</key>
-			<string>Host IP/Domain</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>placeholder</key>
-			<string>IP Address or Domain</string>
-			<key>isIP</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.piercingimpulse.suslan</string>
-			<key>default</key>
-			<string>127.0.0.1</string>
-			<key>key</key>
-			<string>ClientIPAddress</string>
-			<key>label</key>
-			<string>Client IP</string>
-		</dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Proxy Server</string>
-			<key>footerText</key>
-			<string>Perfect solution for hosting a game over VPN such as ZeroTier. You can choose how many clients broadcast your proxy server.
-You need to know the IP address of the clients.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.piercingimpulse.suslan</string>
-			<key>key</key>
-			<string>TweakVPNEnabled</string>
-			<key>label</key>
-			<string>Enabled</string>
+			<key>id</key>
+			<string>BROADCAST_GLOBAL_IP</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -148,6 +95,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNInfiniteLoop</string>
 			<key>label</key>
 			<string>Infinite Loop</string>
+			<key>id</key>
+			<string>INFINITE_LOOP</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -164,6 +113,94 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNTimer</string>
 			<key>label</key>
 			<string>Timer broadcast</string>
+			<key>id</key>
+			<string>BROADCAST_TIMER</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Proxy Client Tunnel</string>
+			<key>footerText</key>
+			<string>Once enabled, will show a proxy message across your network to help you connecting to the host IP specified.
+* NOTE * at the moment does not work over cellular data. If using a VPN, you must set your real local static IP in Client IP (you can check your static IP from the Settings → Wifi and click on the "i" button. Normally looks like 192.168.xxx.xxx)</string>
+			<key>id</key>
+			<string>GLOBAL_TUNNEL</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakLANEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+			<key>id</key>
+			<string>TUNNEL_SWITCH</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>IP Address or Domain</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string>127.0.0.1</string>
+			<key>key</key>
+			<string>HostIPAddress</string>
+			<key>label</key>
+			<string>Host IP/Domain</string>
+			<key>id</key>
+			<string>TUNNEL_HOST_IP</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>placeholder</key>
+			<string>IP Address or Domain</string>
+			<key>isIP</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>default</key>
+			<string></string>
+			<key>key</key>
+			<string>ClientIPAddress</string>
+			<key>label</key>
+			<string>Client IP</string>
+			<key>id</key>
+			<string>TUNNEL_CLIENT_IP</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Proxy Server</string>
+			<key>footerText</key>
+			<string>Perfect solution for hosting a game over VPN such as ZeroTier. You can choose how many clients broadcast your proxy server.
+You need to know the IP address of the clients.</string>
+			<key>id</key>
+			<string>GLOBAL_SERVER</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.piercingimpulse.suslan</string>
+			<key>key</key>
+			<string>TweakVPNEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+			<key>id</key>
+			<string>SERVER_SWITCH</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -179,7 +216,9 @@ You need to know the IP address of the clients.</string>
 			<key>key</key>
 			<string>TweakVPNClientNumber</string>
 			<key>label</key>
-			<string>Client number</string>
+			<string>No of clients</string>
+			<key>id</key>
+			<string>CLIENTS_NUMBER</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -196,8 +235,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP1</string>
 			<key>label</key>
 			<string>Client 1</string>
+			<key>id</key>
+			<string>CLIENT_1</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -212,8 +253,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP2</string>
 			<key>label</key>
 			<string>Client 2</string>
+			<key>id</key>
+			<string>CLIENT_2</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -228,8 +271,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP3</string>
 			<key>label</key>
 			<string>Client 3</string>
+			<key>id</key>
+			<string>CLIENT_3</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -244,8 +289,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP4</string>
 			<key>label</key>
 			<string>Client 4</string>
+			<key>id</key>
+			<string>CLIENT_4</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -260,8 +307,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP5</string>
 			<key>label</key>
 			<string>Client 5</string>
+			<key>id</key>
+			<string>CLIENT_5</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -276,8 +325,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP6</string>
 			<key>label</key>
 			<string>Client 6</string>
+			<key>id</key>
+			<string>CLIENT_6</string>		
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -292,8 +343,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP7</string>
 			<key>label</key>
 			<string>Client 7</string>
+			<key>id</key>
+			<string>CLIENT_7</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -308,8 +361,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP8</string>
 			<key>label</key>
 			<string>Client 8</string>
+			<key>id</key>
+			<string>CLIENT_8</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -324,8 +379,10 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP8</string>
 			<key>label</key>
 			<string>Client 9</string>
+			<key>id</key>
+			<string>CLIENT_9</string>
 		</dict>
-			<dict>
+		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
@@ -340,6 +397,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP10</string>
 			<key>label</key>
 			<string>Client 10</string>
+			<key>id</key>
+			<string>CLIENT_10</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -356,6 +415,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP11</string>
 			<key>label</key>
 			<string>Client 11</string>
+			<key>id</key>
+			<string>CLIENT_11</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -372,6 +433,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP12</string>
 			<key>label</key>
 			<string>Client 12</string>
+			<key>id</key>
+			<string>CLIENT_12</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -388,6 +451,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP13</string>
 			<key>label</key>
 			<string>Client 13</string>
+			<key>id</key>
+			<string>CLIENT_13</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -404,6 +469,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP14</string>
 			<key>label</key>
 			<string>Client 14</string>
+			<key>id</key>
+			<string>CLIENT_14</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -420,6 +487,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakVPNIP15</string>
 			<key>label</key>
 			<string>Client 15</string>
+			<key>id</key>
+			<string>CLIENT_15</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -428,6 +497,8 @@ You need to know the IP address of the clients.</string>
 			<string>EXPERIMENTAL FEATURES</string>
 			<key>footerText</key>
 			<string>Still working on on this features.</string>
+			<key>id</key>
+			<string>GLOBAL_EXPERIMENTAL</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -440,6 +511,8 @@ You need to know the IP address of the clients.</string>
 			<string>TweakPortEnabled</string>
 			<key>label</key>
 			<string>Custom Port</string>
+			<key>id</key>
+			<string>PORT_SWITCH</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -456,9 +529,11 @@ You need to know the IP address of the clients.</string>
 			<string>BroadcastPort</string>
 			<key>label</key>
 			<string>Broadcast Port</string>
+			<key>id</key>
+			<string>BROADCAST_PORT</string>
 		</dict>
 		<dict>
-		<key>cell</key>
+			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>placeholder</key>
 			<string>Host Port</string>
@@ -472,6 +547,8 @@ You need to know the IP address of the clients.</string>
 			<string>HostPort</string>
 			<key>label</key>
 			<string>Host Port</string>
+			<key>id</key>
+			<string>HOST_PORT</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -488,6 +565,8 @@ You need to know the IP address of the clients.</string>
 			<string>ListenPort</string>
 			<key>label</key>
 			<string>Listening Port</string>
+			<key>id</key>
+			<string>LISTEN_PORT</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -504,6 +583,8 @@ You need to know the IP address of the clients.</string>
 			<string>ReceivePort</string>
 			<key>label</key>
 			<string>Receiving Port</string>
+			<key>id</key>
+			<string>RECEIVE_PORT</string>
 		</dict>
 	</array>
 	<key>title</key>

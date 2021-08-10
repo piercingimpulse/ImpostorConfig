@@ -5,6 +5,7 @@ BUNDLE_NAME = susLANPrefs
 susLANPrefs_FILES = PRIMPRootListController.m
 susLANPrefs_FRAMEWORKS = UIKit
 susLANPrefs_PRIVATE_FRAMEWORKS = Preferences
+susLANPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 susLANPrefs_INSTALL_PATH = /Library/PreferenceBundles
 susLANPrefs_CFLAGS = -fobjc-arc
 
