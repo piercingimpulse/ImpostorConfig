@@ -57,16 +57,15 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 #### Broadcast option:
 - [x] Create broadcast message
 - [x] Personalised broadcast message
-- [ ] Copy name from binary host file (advanced)
+- [ ] Copy name from binary host file (optional/advanced)
 #### Client
 - [x] Ensure client can host a game as well
 - [x] Workaround for VPN (using client IP in prefs)
+- [x] Stop fake broadcast message if client choose to host a game (workaround with timer loop)
 - [ ] Ensure tunnel works on cellular data
-- [ ] Stop fake broadcast message if client choose to host a game (optional)
 #### Host
 - [x] Send fake broadcast message via VPN
 - [x] Replace loop/timer with hearthbeat message
-- [ ] 
 #### Preferences Panel
 - [x] Insert all option (also experimental one)
 - [ ] Generate errors
