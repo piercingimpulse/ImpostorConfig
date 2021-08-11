@@ -32,26 +32,37 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 * [Tudor3510](https://github.com/Tudor3510/) & [Luigi Auriemma](https://aluigi.altervista.org/mytoolz.htm) ~ for their projects "Proxom" and "sudppipe" that have largerly helped the devolping of sus LAN.
 
 ## CHANGELOG
+### 2.0
+- Adjust heartbeat (still need more feedback please)
+- The whole setting panel has got a whole restyle:
+ - Settings now are less crowded, when toggle the option, it will show/hide the options
+ - Unified broadcast option to ensure you can use a time also when tunneling
+ - If tunnel active then the server is going to be set OFF and vice versa
+ - Both server and broadcast options now are "connected" and activate/deactivate at the same time.
+ - Errors shown if using more than 15 clients or less than 0 (lol)
+ - Errors using wrong port number (still working on this feature anyway)
+ - Add version number and GitHub link page.
+
 #### 1.2.1a
 - Introduced a rudimental heartbeat system to avoid VPN being disconnected and broadcast storm;
 - Adjusted broadcast timer (still not very precise);
-- Increase clients to 15;
-- Introduced number of clients in the settings always to avoid broadcast storm.
+- Increase clients to 15
+- Introduced number of clients in the settings always to avoid broadcast storm
 - Introduced workaround and improved stability of tunnel by input manually the client IP in case does not work automatically
 
 #### 1.2.0
-- VPN proxy server;
-- Improved stability with multithread.
+- VPN proxy server
+- Improved stability with multithread
 
 #### 1.1.1a
-- Fixed bug of client unable to host;
-- Ability to broadcast fake message to join custom host;
-- Personalised proxy message;
-- New name and icon;
-- Introduction of custom port and VPN broadcast.
+- Fixed bug of client unable to host
+- Ability to broadcast fake message to join custom host
+- Personalised proxy message
+- New name and icon
+- Introduction of custom port and VPN broadcast
 
 #### 1.0.1a
-- Inital release: client can join custom host, but can't host.
+- Inital release: client can join custom host, but can't host
  
 ## TO DO & KNOWN ISSUES
 #### Broadcast option:
