@@ -3,7 +3,6 @@ Tired of waiting in a lobby with stranger? Your device is too old to play online
 **NOTE:** This tweak will work best with a VPN such as ZeroTier, but can be used with your network once the ports 22023 and 47777 (UDP/TCP) are open and linked to the device using the tweak. Can't be used for now only with cellular data or hotspot provided by cellular data.
 
 ## Compatibility
-Tested on:
 Device | bit |iOS Version | Among Us Version | Result
 ------ | --- |----------- | ---------------- | ------
 iPad3,4 (Retina) | 32 | 8.4.1 | 2018.12.24.1 | **successful**;
