@@ -8,6 +8,7 @@ Device | bit |iOS Version | Among Us Version | Result
 iPad3,4 (Retina) | 32 | 8.4.1 | 2018.12.24.1 | **successful**;
 iPad3,4 (Retina) | 32 | 10.3.3* | 2019.10.10.0 | **_unsuccessful_**
 iPod7,1 (7th gen) | 64 | 12.5.4 | 2021.3.5.0 | **succesful**
+iPhone_4.7_P3 (7 GSM) | 64 | 14.4.2 | 2021.6.30.0 | **succesful**
 
 *_this need more testing as I used a CoolBooter version, so could be that why does not work._
 
