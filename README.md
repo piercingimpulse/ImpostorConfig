@@ -4,9 +4,9 @@ Tired of waiting in a lobby with stranger? Your device is too old to play online
 
 ## Compatibility
 Tested on:
-iPad3,4 (Retina - 32bit) iOS 8.4.1 - Among Us 2018.12.24.1 - successful;
-iPad3,4 (Retina - 32bit) iOS 10.3.3 (coolbooter) - Among Us 2019.10.10.0 - unsuccessful;
-iPod7,1 (7th gen) iOS 12.5.4 - succesful;
+- iPad3,4 (Retina - 32bit) **iOS 8.4.1** - **Among Us 2018.12.24.1** - **successful**;
+- iPad3,4 (Retina - 32bit) **iOS 10.3.3** (coolbooter) - **Among Us 2019.10.10.0** - **_unsuccessful_**;
+- iPod7,1 (7th gen) **iOS 12.5.4 - **Among Us 2021.3.5.0** - **succesful**;
 
  
 ## How does it work?
@@ -35,13 +35,13 @@ If you are using a VPN (like ZeroTier), you can broadcast a (customisable) proxy
 ### 2.0
 - Adjust heartbeat (still need more feedback please)
 - The whole setting panel has got a whole restyle:
- - Settings now are less crowded, when toggle the option, it will show/hide the options
- - Unified broadcast option to ensure you can use a time also when tunneling
- - If tunnel active then the server is going to be set OFF and vice versa
- - Both server and broadcast options now are "connected" and activate/deactivate at the same time.
- - Errors shown if using more than 15 clients or less than 0 (lol)
- - Errors using wrong port number (still working on this feature anyway)
- - Add version number and GitHub link page.
+  - Settings now are less crowded, when toggle the option, it will show/hide the options
+  - Unified broadcast option to ensure you can use a time also when tunneling
+  - If tunnel active then the server is going to be set OFF and vice versa
+  - Both server and broadcast options now are "connected" and activate/deactivate at the same time.
+  - Errors shown if using more than 15 clients or less than 0 (lol)
+  - Errors using wrong port number (still working on this feature anyway)
+  - Add version number and GitHub link page.
 
 #### 1.2.1a
 - Introduced a rudimental heartbeat system to avoid VPN being disconnected and broadcast storm;
