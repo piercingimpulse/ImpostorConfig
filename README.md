@@ -4,9 +4,13 @@ Tired of waiting in a lobby with stranger? Your device is too old to play online
 
 ## Compatibility
 Tested on:
-- iPad3,4 (Retina - 32bit) **iOS 8.4.1** - **Among Us 2018.12.24.1** - **successful**;
-- iPad3,4 (Retina - 32bit) **iOS 10.3.3** (coolbooter) - **Among Us 2019.10.10.0** - **_unsuccessful_**;
-- iPod7,1 (7th gen) **iOS 12.5.4 - **Among Us 2021.3.5.0** - **succesful**;
+Device | bit |iOS Version | Among Us Version | Result
+------ | --- |----------- | ---------------- | ------
+iPad3,4 (Retina) | 32 | 8.4.1 | 2018.12.24.1 | **successful**;
+iPad3,4 (Retina) | 32 | 10.3.3* | 2019.10.10.0 | **_unsuccessful_**
+iPod7,1 (7th gen) | 64 | 12.5.4 | 2021.3.5.0 | **succesful**
+
+*_this need more testing as I used a CoolBooter version, so could be that why does not work._
 
  
 ## How does it work?
