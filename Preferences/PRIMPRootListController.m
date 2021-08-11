@@ -30,14 +30,21 @@
 		HBPreferences *preferences = [HBPreferences preferencesForIdentifier:@"com.piercingimpulse.suslan"];
 			if([key isEqualToString:@"TweakLANEnabled"]) {
     			if([value boolValue]) {
-     			 [preferences setBool:NO forKey:@"TweakVPNEnabled"];
+     			[preferences setBool:NO forKey:@"TweakVPNEnabled"];
 				[self reloadSpecifiers];
 				}
 			} else if([key isEqualToString:@"TweakVPNEnabled"]) {
     			if([value boolValue]) {
-     			 [preferences setBool:NO forKey:@"TweakLANEnabled"];
+     			[preferences setBool:NO forKey:@"TweakLANEnabled"];
+				[preferences setBool:YES forKey:@"TweakBroadcastEnabled"];
 				[self reloadSpecifiers];
 			}
+		}
+		if([key isEqualToString:@"TweakBroadcastEnabled"]) {
+    			if(![value boolValue]) {
+     			[preferences setBool:NO forKey:@"TweakVPNEnabled"];
+				[self reloadSpecifiers];
+				}
 		}
 
 
