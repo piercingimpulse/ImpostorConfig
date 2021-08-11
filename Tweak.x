@@ -74,9 +74,9 @@ static char finalBroadcastMessage[100];
 const char BROADCAST_PROXY[] = "Proxy";
 const char BROADCAST_PROXY_FINAL[] = "~Open~1~";
 static int startBroadcast = 0;
-static int timerBroadcast = 20;
+static int timerBroadcast = 13;
 static BOOL TweakVPNInfiniteLoop = NO;
-static uint16_t TweakVPNTimer = 0;
+static int TweakVPNTimer = 0;
 static int TweakVPNClientNumber = 0;
 
 //VPN Variable test
@@ -163,6 +163,7 @@ void* threadFuncBroadcast(void* arg) {
 	if(sendto(udp_broadcast, finalBroadcastMessage, strlen(finalBroadcastMessage), 0, (struct sockaddr*)&udpbroadcast, sizeof udpbroadcast) == -1) {
 		die("sendto()");
 	}
+	sleep(1);
 		if (TweakVPNInfiniteLoop == NO) {
 			++startBroadcast;
 			if (timerBroadcast <= TweakVPNTimer && startBroadcast == timerBroadcast) {
@@ -436,6 +437,7 @@ void Broadcast() {
     }
 	
 }
+
 void BroadcastVPN() {
 	int rc;
 	pthread_t thread_id;
@@ -446,27 +448,6 @@ void BroadcastVPN() {
     }
 	
 }
-
-
-%group CustomVPNBroadcast
-
-%hookf(ssize_t, sendto, int sockfd, const void *buffer, size_t length, int flags, struct sockaddr *_destination, socklen_t destinationLength) {
-	if (destinationLength != sizeof(struct sockaddr_in)) return %orig;
-	struct sockaddr_in destination = *(struct sockaddr_in *)_destination;
-	if (destination.sin_addr.s_addr == htonl(INADDR_BROADCAST)) {
-	// if (destination.sin_port == htons(47777)) {
-	if (strlen(GlobalBroadcast) > 0) {
-		inet_pton(AF_INET, GlobalBroadcast, &destination.sin_addr);
-	} else {
-		inet_pton(AF_INET, "255.255.255.255", &destination.sin_addr);
-	}
-	ssize_t ret = %orig(sockfd, buffer, length, flags, (struct sockaddr *)&destination, destinationLength);
-	return ret;
-	}
-	return %orig;
- }
-
-%end
 
 %group CustomLANServer
 
@@ -495,6 +476,7 @@ void BroadcastVPN() {
 	manualAddr = clientName.UTF8String;
 
 	if (destination.sin_addr.s_addr == inet_addr(addr) || destination.sin_addr.s_addr == inet_addr(manualAddr)) { // need to be change to the right ip, still studying about
+	freeifaddrs(ifap);
 	// Find the IP address of the host specified by the user
 	BOOL hostEntryExists = NO;
 	pthread_mutex_lock(&mutex);
@@ -524,6 +506,27 @@ void BroadcastVPN() {
 	}
 	return %orig;
 }
+
+%end
+
+%group CustomVPNBroadcast
+
+%hookf(ssize_t, sendto, int sockfd, const void *buffer, size_t length, int flags, struct sockaddr *_destination, socklen_t destinationLength) {
+	if (destinationLength != sizeof(struct sockaddr_in)) return %orig;
+	struct sockaddr_in destination = *(struct sockaddr_in *)_destination;
+	if (destination.sin_addr.s_addr == htonl(INADDR_BROADCAST)) {
+	// if (destination.sin_port == htons(47777)) {
+	if (strlen(GlobalBroadcast) > 0) {
+		inet_pton(AF_INET, GlobalBroadcast, &destination.sin_addr);
+	} else {
+		inet_pton(AF_INET, "255.255.255.255", &destination.sin_addr);
+	}
+	ssize_t ret = %orig(sockfd, buffer, length, flags, (struct sockaddr *)&destination, destinationLength);
+	return ret;
+	}
+	return %orig;
+ }
+
 %end
 
 %group ExpPort
@@ -602,8 +605,11 @@ void BroadcastVPN() {
 			TweakVPNInfiniteLoop = [VPNTimerNoLoop boolValue];
 			NSString *VPNTimer = [preferences objectForKey:ksusLANTweakVPNTimer];
 			int VPNTimermsg = [VPNTimer intValue];
-			TweakVPNTimer = (uint16_t)VPNTimermsg;
-			}
+			TweakVPNTimer = VPNTimermsg;
+			if ((VPNTimermsg < 0x000) || (VPNTimermsg > 0xFFF)) {
+				[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid cycle: %@", VPNTimer];
+		 	}
+		}
 
 			// Custom broadcast
 			NSNumber *LANServerEnabled = [preferences objectForKey:ksusLANTweakLANEnabled];
@@ -626,6 +632,11 @@ void BroadcastVPN() {
 					NSString *numberclient = [preferences objectForKey:ksusLANTweakVPNClientNumber];
 					int clientnumber = [numberclient intValue];
 					TweakVPNClientNumber = clientnumber;
+					if (clientnumber < 0x00) {
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid number of client: %@", numberclient];
+		 			} else if (clientnumber > 0x0F) {
+						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid number of client: %@", numberclient];
+		 			}
 					NSString *vpnip1 = [preferences objectForKey:ksusLANTweakVPNIP1];
 					const char *vpnipmsg1 = [vpnip1 UTF8String];
 					VPNIP1 = vpnipmsg1;
@@ -685,22 +696,18 @@ void BroadcastVPN() {
 					NSString *receiveport = [preferences objectForKey:ksusLANCustomReceivePort];
 					int rawPort1 = [broadcastport intValue];
 						if ((rawPort1 < 0x0000) || (rawPort1 > 0xFFFF)) {
-						// The port must be an unsigned 16-bit value!
 						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", broadcastport];
 		 			}
 						int rawPort2 = [serverport intValue];
 						if ((rawPort2 < 0x0000) || (rawPort2 > 0xFFFF)) {
-						// The port must be an unsigned 16-bit value!
 						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", serverport];
 		 			}
 						int rawPort3 = [listenport intValue];
 						if ((rawPort3 < 0x0000) || (rawPort3 > 0xFFFF)) {
-						// The port must be an unsigned 16-bit value!
 						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", listenport];
 		 			}
 						int rawPort4 = [receiveport intValue];
 						if ((rawPort4 < 0x0000) || (rawPort4 > 0xFFFF)) {
-						// The port must be an unsigned 16-bit value!
 						[NSException raise:NSInvalidArgumentException format:@"[susLAN] Invalid port: %@", receiveport];
 					}
 					// Convert the specified port to the network byte order

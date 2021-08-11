@@ -5,6 +5,16 @@
 	<key>items</key>
 	<array>
 		<dict>
+    	<key>cell</key>
+    	<string>PSGroupCell</string>
+    	<key>headerCellClass</key>
+    	<string>HBImageTableCell</string>
+    	<key>height</key>
+    	<integer>100</integer>
+    	<key>icon</key>
+    	<string>logo.png</string>
+	</dict>
+	<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
@@ -585,6 +595,30 @@ You need to know the IP address of the clients.</string>
 			<string>Receiving Port</string>
 			<key>id</key>
 			<string>RECEIVE_PORT</string>
+		</dict>
+				<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Credits</string>
+			<key>footerText</key>
+			<string>sus LAN v.2.0</string>
+			<key>footerAlignment</key>
+			<string>1</string>
+			<key>id</key>
+			<string>CREDITS</string>
+		</dict>
+		<dict>
+   			<key>cellClass</key>
+  			<string>HBLinkTableCell</string>
+   			<key>label</key>
+			<string>GitHub</string>
+			<key>subtitle</key>
+   			<string>Check here for updates!</string>
+    		<key>url</key>
+   			<string>https://github.com/piercingimpulse/sus-LAN</string>
+			<key>id</key>
+			<string>GITHUB</string>
 		</dict>
 	</array>
 	<key>title</key>
